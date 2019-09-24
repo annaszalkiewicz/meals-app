@@ -1,20 +1,21 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import BodyText from "../components/ui/BodyText";
 
 const CategoriesScreen = props => {
   return (
     <View style={styles.container}>
-      <Text>Categories screen</Text>
+      <BodyText>Categories screen</BodyText>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
-export default CategoriesScreen
+export default CategoriesScreen;
