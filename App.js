@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { AppLoading } from 'expo';
 import * as Font from "expo-font";
+
+import MealsNavigator from './navigation/MealsNavigator';
 import CategoriesScreen from "./screens/CategoriesScreen";
 
 const fetchFonts = () => {
@@ -25,9 +27,7 @@ const App = () => {
     )
   }
   return (
-    <View style={styles.container}>
-      <CategoriesScreen />
-    </View>
+    <MealsNavigator />
   );
 };
 
