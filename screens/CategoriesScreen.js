@@ -26,6 +26,10 @@ const CategoriesScreen = props => {
   );
 };
 
+CategoriesScreen.navigationOptions = {
+  title: 'Meal Categories'
+}
+
 const styles = StyleSheet.create({
   container: {
     width: "50%",
