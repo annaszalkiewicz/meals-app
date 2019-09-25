@@ -13,8 +13,8 @@ const CategoryItem = props => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "50%",
-    height: 150,
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
     padding: 14

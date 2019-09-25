@@ -1,19 +1,20 @@
 import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, TouchableOpacity, StyleSheet } from "react-native";
 
-import { CATEGORIES } from '../data/category-db';
+import { CATEGORIES } from "../data/category-db";
 import CategoryItem from "../components/CategoryItem";
 
 const CategoriesScreen = props => {
-
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
-      <CategoryItem
-        title={item.title}
-        color={item.color}
-      />
-    )
-  }
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate({ routeName: "MealCategory" })}
+        style={styles.container}
+      >
+        <CategoryItem title={item.title} color={item.color} />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <FlatList
@@ -27,9 +28,8 @@ const CategoriesScreen = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    width: "50%",
+    height: 150
   }
 });
 
