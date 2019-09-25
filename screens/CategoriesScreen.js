@@ -1,13 +1,27 @@
 import React from "react";
-import { View, Button, StyleSheet } from "react-native";
-import BodyText from "../components/ui/BodyText";
+import { FlatList, StyleSheet } from "react-native";
+
+import { CATEGORIES } from '../data/category-db';
+import CategoryItem from "../components/CategoryItem";
 
 const CategoriesScreen = props => {
+
+  const renderItem = ({item}) => {
+    return (
+      <CategoryItem
+        title={item.title}
+        color={item.color}
+      />
+    )
+  }
+
   return (
-    <View style={styles.container}>
-      <BodyText>Categories screen</BodyText>
-      <Button title="Show meals" onPress={() => props.navigation.navigate({routeName: 'MealCategory'})} />
-    </View>
+    <FlatList
+      data={CATEGORIES}
+      renderItem={renderItem}
+      numColumns={2}
+      keyExtractor={(item, index) => item.id}
+    />
   );
 };
 
