@@ -1,8 +1,9 @@
 import React from "react";
-import { FlatList, TouchableOpacity, StyleSheet } from "react-native";
+import { FlatList, TouchableOpacity, Platform, StyleSheet } from "react-native";
 
 import { CATEGORIES } from "../data/category-db";
 import CategoryItem from "../components/CategoryItem";
+import variables from "../constants/variables";
 
 const CategoriesScreen = props => {
   const renderItem = ({ item }) => {
@@ -27,8 +28,15 @@ const CategoriesScreen = props => {
 };
 
 CategoriesScreen.navigationOptions = {
-  title: 'Meal Categories'
-}
+  title: "Meal Categories",
+  headerStyle: {
+    backgroundColor: Platform.OS === 'ios' ? '#fff' : "rgba(0,0,0,0.8)"
+  },
+  headerTintColor: Platform.OS === 'ios' ? '#000' : "#fff",
+  headerTitleStyle: {
+    fontFamily: variables.ralewaySemibold
+  }
+};
 
 const styles = StyleSheet.create({
   container: {
