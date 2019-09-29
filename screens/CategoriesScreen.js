@@ -6,10 +6,11 @@ import CategoryItem from "../components/CategoryItem";
 import variables from "../constants/variables";
 
 const CategoriesScreen = props => {
+  
   const renderItem = ({ item }) => {
     return (
       <TouchableOpacity
-        onPress={() => props.navigation.navigate({ routeName: "MealCategory" })}
+        onPress={() => props.navigation.navigate({ routeName: "MealCategory", params: {categoryId: item.id} })}
         style={styles.container}
       >
         <CategoryItem title={item.title} color={item.color} />
