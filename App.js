@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { AppLoading } from 'expo';
+import { StyleSheet } from "react-native";
+import { useScreens } from "react-native-screens";
+import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
-import MealsNavigator from './navigation/MealsNavigator';
+import MealsNavigator from "./navigation/MealsNavigator";
 import CategoriesScreen from "./screens/CategoriesScreen";
 
 const fetchFonts = () => {
@@ -13,8 +14,9 @@ const fetchFonts = () => {
   });
 };
 
-const App = () => {
+useScreens();
 
+const App = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
 
   if (!dataLoaded) {
@@ -24,11 +26,9 @@ const App = () => {
         onFinish={() => setDataLoaded(true)}
         onError={err => console.log(err)}
       />
-    )
+    );
   }
-  return (
-    <MealsNavigator />
-  );
+  return <MealsNavigator />;
 };
 
 const styles = StyleSheet.create({
