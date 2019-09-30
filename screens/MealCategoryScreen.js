@@ -3,6 +3,7 @@ import { View, Text, Button, FlatList, TouchableOpacity, StyleSheet } from "reac
 
 import { CATEGORIES } from '../data/category-db';
 import { MEALS } from '../data/meals-db';
+import MealItem from "../components/MealItem";
 
 const MealCategoryScreen = props => {
 
@@ -13,13 +14,7 @@ const MealCategoryScreen = props => {
   );
 
   const renderItem = ({ item }) => {
-    return (
-      <TouchableOpacity>
-        <View>
-          <Text>{item.title}</Text>
-        </View>
-      </TouchableOpacity>
-    )
+    return <MealItem item={item} />
   }
   return (
 
