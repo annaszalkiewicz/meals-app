@@ -1,19 +1,41 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 
 import { CATEGORIES } from '../data/category-db';
+import { MEALS } from '../data/meals-db';
 
 const MealCategoryScreen = props => {
 
   const categoryId = props.navigation.getParam('categoryId');
-  const currentCategory = CATEGORIES.find(c => c.id === categoryId);
-  return (
-    <View style={styles.container}>
-      <Text>Meal Category Screen</Text>
-      <Text>{currentCategory.title}</Text>
-      <Button title="Show meal details" onPress={() => props.navigation.navigate({routeName: 'MealDetails'})} />
+  // const currentCategory = CATEGORIES.find(c => c.id === categoryId);
+  const mealsInCategory = MEALS.filter(
+    meal => meal.categoryIds.indexOf(categoryId) >= 0
+  );
 
+  const renderItem = ({ item }) => {
+    return (
+      <TouchableOpacity>
+        <View>
+          <Text>{item.title}</Text>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+  return (
+
+    <View style={styles.container}>
+      <FlatList 
+        data={mealsInCategory}
+        keyExtractor={(item, i) => item.id}
+        renderItem={renderItem}
+      />
     </View>
+    // <View style={styles.container}>
+    //   <Text>Meal Category Screen</Text>
+    //   <Text>{currentCategory.title}</Text>
+    //   <Button title="Show meal details" onPress={() => props.navigation.navigate({routeName: 'MealDetails'})} />
+
+    // </View>
   );
 };
 
