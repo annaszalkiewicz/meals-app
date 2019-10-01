@@ -19,7 +19,7 @@ const MealItem = props => {
             source={{ uri: props.item.imageUrl }}
             style={styles.image}
           >
-            <View>
+            <View style={styles.headingContainer}>
               <HeadingOne>{props.item.title}</HeadingOne>
             </View>
           </ImageBackground>
@@ -46,7 +46,12 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 200
+    height: 200,
+    justifyContent: 'flex-end'
+  },
+  headingContainer: {
+    padding: 10,
+    backgroundColor: 'rgba(0,0,0,0.5)'
   }
 });
 export default MealItem;
