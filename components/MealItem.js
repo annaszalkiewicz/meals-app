@@ -46,7 +46,6 @@ const MealItem = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     marginVertical: 10,
     justifyContent: "flex-start"
   },
