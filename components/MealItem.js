@@ -24,7 +24,7 @@ const MealItem = props => {
             </View>
           </ImageBackground>
         </View>
-        <View>
+        <View style={styles.textContainer}>
           <BodyText>{props.item.duration}m</BodyText>
           <BodyText>{props.item.complexity}</BodyText>
           <BodyText>{props.item.affordability}</BodyText>
@@ -55,6 +55,12 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: '#fff'
+  },
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    backgroundColor: 'rgba(0,0,0,0.1)'
   }
 });
 export default MealItem;
