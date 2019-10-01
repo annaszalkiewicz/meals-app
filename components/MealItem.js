@@ -1,17 +1,26 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  StyleSheet
+} from "react-native";
 
-import BodyText from './ui/BodyText';
-import HeadingOne from './ui/HeadingOne';
+import BodyText from "./ui/BodyText";
+import HeadingOne from "./ui/HeadingOne";
 
 const MealItem = props => {
   return (
     <TouchableOpacity>
-      <View>
-        <View>
-          <ImageBackground source={{uri: props.item.imageUrl}} style={styles.image}>
+      <View style={styles.container}>
+        <View style={styles.ImageContainer}>
+          <ImageBackground
+            source={{ uri: props.item.imageUrl }}
+            style={styles.image}
+          >
             <View>
-            <HeadingOne>{props.item.title}</HeadingOne>
+              <HeadingOne>{props.item.title}</HeadingOne>
             </View>
           </ImageBackground>
         </View>
@@ -26,8 +35,17 @@ const MealItem = props => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginVertical: 10,
+    justifyContent: 'flex-start',
+  },
+  imageContainer: {
+    width: "100%",
+    height: 200
+  },
   image: {
-    width: 300,
+    width: "100%",
     height: 200
   }
 });
