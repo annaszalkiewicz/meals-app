@@ -6,6 +6,7 @@ import {
   ImageBackground,
   StyleSheet
 } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import BodyText from "./ui/BodyText";
 import HeadingOne from "./ui/HeadingOne";
@@ -24,10 +25,19 @@ const MealItem = props => {
             </View>
           </ImageBackground>
         </View>
-        <View style={styles.textContainer}>
-          <BodyText>{props.item.duration}m</BodyText>
-          <BodyText>{props.item.complexity}</BodyText>
-          <BodyText>{props.item.affordability}</BodyText>
+        <View style={styles.textBodyContainer}>
+          <View style={styles.textContainer}>
+            <MaterialCommunityIcons name="timer" size={18} style={styles.icon} />
+            <BodyText>{props.item.duration}m</BodyText>
+          </View>
+          <View  style={styles.textContainer}>
+            <MaterialCommunityIcons name="circle-slice-3" size={18} style={styles.icon} />
+            <BodyText>{props.item.complexity}</BodyText>
+          </View>
+          <View  style={styles.textContainer}>
+            <MaterialCommunityIcons name="coin" size={18} style={styles.icon} />
+            <BodyText>{props.item.affordability}</BodyText>
+          </View>
         </View>
       </View>
     </TouchableOpacity>
@@ -38,7 +48,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginVertical: 10,
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start"
   },
   imageContainer: {
     width: "100%",
@@ -47,20 +57,27 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 200,
-    justifyContent: 'flex-end'
+    justifyContent: "flex-end"
   },
   headingContainer: {
     padding: 10,
-    backgroundColor: 'rgba(0,0,0,0.5)'
+    backgroundColor: "rgba(0,0,0,0.5)"
   },
   heading: {
-    color: '#fff'
+    color: "#fff"
+  },
+  textBodyContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    backgroundColor: "rgba(0,0,0,0.1)"
   },
   textContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    backgroundColor: 'rgba(0,0,0,0.1)'
+    justifyContent: 'flex-start'
+  },
+  icon: {
+    marginRight: 5
   }
 });
 export default MealItem;
