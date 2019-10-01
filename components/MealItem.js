@@ -20,7 +20,7 @@ const MealItem = props => {
             style={styles.image}
           >
             <View style={styles.headingContainer}>
-              <HeadingOne>{props.item.title}</HeadingOne>
+              <HeadingOne style={styles.heading}>{props.item.title}</HeadingOne>
             </View>
           </ImageBackground>
         </View>
@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
   headingContainer: {
     padding: 10,
     backgroundColor: 'rgba(0,0,0,0.5)'
+  },
+  heading: {
+    color: '#fff'
   }
 });
 export default MealItem;
