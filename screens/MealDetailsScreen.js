@@ -1,13 +1,20 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
+import { MEALS } from "../data/meals-db";
+
 const MealDetailsScreen = props => {
+  const mealId = props.navigation.getParam("mealId");
+  const currentMeal = MEALS.find(meal => meal.id === mealId);
   return (
     <View style={styles.container}>
-      <Text>Meal Details screen</Text>
-      <Button title="Go to categories" onPress={() => {
-        props.navigation.popToTop();
-      }} />
+      <Text>{currentMeal.title}</Text>
+      <Button
+        title="Go to categories"
+        onPress={() => {
+          props.navigation.popToTop();
+        }}
+      />
     </View>
   );
 };
