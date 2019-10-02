@@ -19,6 +19,14 @@ const MealDetailsScreen = props => {
   );
 };
 
+MealDetailsScreen.navigationOptions = navigationData => {
+  const mealId = navigationData.navigation.getParam("mealId");
+  const currentMeal = MEALS.find(meal => meal.id === mealId);
+  return {
+    title: currentMeal.title
+  };
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
