@@ -33,9 +33,17 @@ const MealsNavigator = createStackNavigator(
   }
 );
 
-const TabsNavigator = createBottomTabNavigator({
-  AllMeals: MealsNavigator,
-  Favorites: FavoritesScreen
-});
+const TabsNavigator = createBottomTabNavigator(
+  {
+    AllMeals: MealsNavigator,
+    Favorites: FavoritesScreen
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: "red",
+      inactiveTintColor: "rgba(0,0,0,0.6)"
+    }
+  }
+);
 
 export default createAppContainer(TabsNavigator);
