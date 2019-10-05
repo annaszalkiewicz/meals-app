@@ -1,7 +1,9 @@
+import React from 'react';
 import { Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import CategoriesScreen from "../screens/CategoriesScreen";
 import MealCategoryScreen from "../screens/MealCategoryScreen";
@@ -35,8 +37,22 @@ const MealsNavigator = createStackNavigator(
 
 const TabsNavigator = createBottomTabNavigator(
   {
-    AllMeals: MealsNavigator,
-    Favorites: FavoritesScreen
+    AllMeals: {
+      screen: MealsNavigator,
+      navigationOptions: {
+        tabBarIcon: tabInfo => {
+          return <MaterialCommunityIcons name="food" size={24} color={tabInfo.tintColor} />
+        }
+      }
+    },
+    Favorites: {
+      screen: FavoritesScreen,
+      navigationOptions: {
+        tabBarIcon: tabInfo => {
+          return <MaterialCommunityIcons name="heart" size={24} color={tabInfo.tintColor} />
+        }
+      }
+    }
   },
   {
     tabBarOptions: {
