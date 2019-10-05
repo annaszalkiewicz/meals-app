@@ -40,6 +40,7 @@ const TabsNavigator = createBottomTabNavigator(
     AllMeals: {
       screen: MealsNavigator,
       navigationOptions: {
+        tabBarLabel: 'Meals',
         tabBarIcon: tabInfo => {
           return <MaterialCommunityIcons name="food" size={24} color={tabInfo.tintColor} />
         }
@@ -48,6 +49,7 @@ const TabsNavigator = createBottomTabNavigator(
     Favorites: {
       screen: FavoritesScreen,
       navigationOptions: {
+        tabBarLabel: 'Favorites',
         tabBarIcon: tabInfo => {
           return <MaterialCommunityIcons name="heart" size={24} color={tabInfo.tintColor} />
         }
