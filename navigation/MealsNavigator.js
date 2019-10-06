@@ -3,6 +3,7 @@ import { Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import CategoriesScreen from "../screens/CategoriesScreen";
@@ -35,27 +36,39 @@ const MealsNavigator = createStackNavigator(
   }
 );
 
-const TabsNavigator = createBottomTabNavigator(
-  {
-    AllMeals: {
-      screen: MealsNavigator,
-      navigationOptions: {
-        tabBarLabel: 'Meals',
-        tabBarIcon: tabInfo => {
-          return <MaterialCommunityIcons name="food" size={24} color={tabInfo.tintColor} />
-        }
-      }
-    },
-    Favorites: {
-      screen: FavoritesScreen,
-      navigationOptions: {
-        tabBarLabel: 'Favorites',
-        tabBarIcon: tabInfo => {
-          return <MaterialCommunityIcons name="heart" size={24} color={tabInfo.tintColor} />
-        }
-      }
+const tabsConfig = {
+  AllMeals: {
+    screen: MealsNavigator,
+    navigationOptions: {
+      tabBarLabel: 'Meals',
+      tabBarIcon: tabInfo => {
+        return <MaterialCommunityIcons name="food" size={24} color={tabInfo.tintColor} />
+      },
+      tabBarColor: 'darkred'
     }
   },
+  Favorites: {
+    screen: FavoritesScreen,
+    navigationOptions: {
+      tabBarLabel: 'Favorites',
+      tabBarIcon: tabInfo => {
+        return <MaterialCommunityIcons name="heart" size={24} color={tabInfo.tintColor} />
+      },
+      tabBarColor: 'red'
+    }
+  }
+};
+
+const TabsNavigator = Platform.OS === 'android' ? createMaterialBottomTabNavigator(
+  tabsConfig,
+  {
+    shifting: true,
+    barStyle: {
+      backgroundColor: '#333'
+    }
+  }
+) : createBottomTabNavigator(
+  tabsConfig,
   {
     tabBarOptions: {
       activeTintColor: "red",
