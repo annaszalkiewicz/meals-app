@@ -9,6 +9,7 @@ import {
   StyleSheet
 } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { MEALS } from "../data/meals-db";
 import HeaderButton from "../components/HeaderButton";
@@ -21,9 +22,25 @@ const MealDetailsScreen = props => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Image
-          source={{ uri: currentMeal.imageUrl }}
-          style={styles.image} />
+        <Image source={{ uri: currentMeal.imageUrl }} style={styles.image} />
+      </View>
+      <View style={styles.textBodyContainer}>
+        <View style={styles.textContainer}>
+          <MaterialCommunityIcons name="timer" size={18} style={styles.icon} />
+          <BodyText>{currentMeal.duration}m</BodyText>
+        </View>
+        <View style={styles.textContainer}>
+          <MaterialCommunityIcons
+            name="circle-slice-3"
+            size={18}
+            style={styles.icon}
+          />
+          <BodyText>{currentMeal.complexity}</BodyText>
+        </View>
+        <View style={styles.textContainer}>
+          <MaterialCommunityIcons name="coin" size={18} style={styles.icon} />
+          <BodyText>{currentMeal.affordability}</BodyText>
+        </View>
       </View>
     </ScrollView>
   );
@@ -49,8 +66,21 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 200
+  },
+  textBodyContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    backgroundColor: "rgba(0,0,0,0.1)"
+  },
+  textContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start"
+  },
+  icon: {
+    marginRight: 5
   }
 });
 
