@@ -98,13 +98,28 @@ const TabsNavigator =
         }
       });
 
-const FiltersNavigator = createStackNavigator({
-  Filters: FiltersScreen
-}, defaultStackNavigationOptions);
+const FiltersNavigator = createStackNavigator(
+  {
+    Filters: FiltersScreen
+  },
+  defaultStackNavigationOptions
+);
 
-const DrawerNavigator = createDrawerNavigator({
-  Meals: TabsNavigator,
-  Filters: FiltersNavigator
-});
+const DrawerNavigator = createDrawerNavigator(
+  {
+    Meals: TabsNavigator,
+    Filters: FiltersNavigator
+  },
+  {
+    contentOptions: {
+      activeTintColor: "darkred",
+      inactiveTintColor: "black",
+      labelStyle: {
+        fontFamily: variables.ralewaySemibold,
+        fontSize: 20
+      }
+    }
+  }
+);
 
 export default createAppContainer(DrawerNavigator);
