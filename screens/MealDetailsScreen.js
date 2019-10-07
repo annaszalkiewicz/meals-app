@@ -1,23 +1,31 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  View,
+  ImageBackground,
+  Image,
+  Text,
+  Button,
+  StyleSheet
+} from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import { MEALS } from "../data/meals-db";
 import HeaderButton from "../components/HeaderButton";
+import HeadingOne from "../components/ui/HeadingOne";
+import BodyText from "../components/ui/BodyText";
 
 const MealDetailsScreen = props => {
   const mealId = props.navigation.getParam("mealId");
   const currentMeal = MEALS.find(meal => meal.id === mealId);
   return (
-    <View style={styles.container}>
-      <Text>{currentMeal.title}</Text>
-      <Button
-        title="Go to categories"
-        onPress={() => {
-          props.navigation.popToTop();
-        }}
-      />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Image
+          source={{ uri: currentMeal.imageUrl }}
+          style={styles.image} />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -39,6 +47,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  image: {
+    width: '100%',
+    height: 200
   }
 });
 
