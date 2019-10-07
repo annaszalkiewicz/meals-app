@@ -100,7 +100,7 @@ const TabsNavigator =
 
 const FiltersNavigator = createStackNavigator({
   Filters: FiltersScreen
-});
+}, defaultStackNavigationOptions);
 
 const DrawerNavigator = createDrawerNavigator({
   Meals: TabsNavigator,
