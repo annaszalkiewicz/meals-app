@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  ScrollView,
-  View,
-  Image,
-  StyleSheet
-} from "react-native";
+import { ScrollView, View, Image, StyleSheet } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -48,6 +43,16 @@ const MealDetailsScreen = props => {
             <BodyText>{ingredient}</BodyText>
           </View>
         );
+      })}
+      <View style={styles.headingContainer}>
+        <HeadingOne>Instructions</HeadingOne>
+      </View>
+      {currentMeal.instructions.map(instruction => {
+        return (
+          <View key={instruction} style={styles.ingredientContainer}>
+          <BodyText>{instruction}</BodyText>
+        </View>
+        )
       })}
     </ScrollView>
   );
