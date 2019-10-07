@@ -2,10 +2,7 @@ import React from "react";
 import {
   ScrollView,
   View,
-  ImageBackground,
   Image,
-  Text,
-  Button,
   StyleSheet
 } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -42,6 +39,16 @@ const MealDetailsScreen = props => {
           <BodyText>{currentMeal.affordability}</BodyText>
         </View>
       </View>
+      <View style={styles.headingContainer}>
+        <HeadingOne>Ingredients</HeadingOne>
+      </View>
+      {currentMeal.ingredients.map(ingredient => {
+        return (
+          <View key={ingredient} style={styles.ingredientContainer}>
+            <BodyText>{ingredient}</BodyText>
+          </View>
+        );
+      })}
     </ScrollView>
   );
 };
@@ -81,6 +88,15 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 5
+  },
+  headingContainer: {
+    padding: 20
+  },
+  ingredientContainer: {
+    padding: 10,
+    backgroundColor: "#f9f9f9",
+    marginVertical: 5,
+    marginHorizontal: 30
   }
 });
 
