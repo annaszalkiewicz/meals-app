@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Text, Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -52,7 +52,6 @@ const tabsConfig = {
   AllMeals: {
     screen: MealsNavigator,
     navigationOptions: {
-      tabBarLabel: "Meals",
       tabBarIcon: tabInfo => {
         return (
           <MaterialCommunityIcons
@@ -62,13 +61,14 @@ const tabsConfig = {
           />
         );
       },
-      tabBarColor: "darkred"
+      tabBarColor: "darkred",
+      tabBarLabel: <Text style={{fontFamily: variables.ralewaySemibold, fontSize: 14}}>Meals</Text>
     }
   },
   Favorites: {
     screen: FavoritesNavigator,
     navigationOptions: {
-      tabBarLabel: "Favorites",
+      tabBarLabel: <Text style={{fontFamily: variables.ralewaySemibold, fontSize: 14}}>Favorites</Text>,
       tabBarIcon: tabInfo => {
         return (
           <MaterialCommunityIcons
@@ -94,7 +94,11 @@ const TabsNavigator =
     : createBottomTabNavigator(tabsConfig, {
         tabBarOptions: {
           activeTintColor: "red",
-          inactiveTintColor: "rgba(0,0,0,0.6)"
+          inactiveTintColor: "rgba(0,0,0,0.6)",
+          labelStyle: {
+            fontFamily: variables.ralewaySemibold,
+            fontSize: 16
+          }
         }
       });
 
