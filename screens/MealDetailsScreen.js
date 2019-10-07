@@ -7,6 +7,7 @@ import { MEALS } from "../data/meals-db";
 import HeaderButton from "../components/HeaderButton";
 import HeadingOne from "../components/ui/HeadingOne";
 import BodyText from "../components/ui/BodyText";
+import ListItem from "../components/ui/ListItem";
 
 const MealDetailsScreen = props => {
   const mealId = props.navigation.getParam("mealId");
@@ -37,23 +38,15 @@ const MealDetailsScreen = props => {
       <View style={styles.headingContainer}>
         <HeadingOne>Ingredients</HeadingOne>
       </View>
-      {currentMeal.ingredients.map(ingredient => {
-        return (
-          <View key={ingredient} style={styles.ingredientContainer}>
-            <BodyText>{ingredient}</BodyText>
-          </View>
-        );
-      })}
+      {currentMeal.ingredients.map(ingredient => (
+        <ListItem key={ingredient}>{ingredient}</ListItem>
+      ))}
       <View style={styles.headingContainer}>
         <HeadingOne>Instructions</HeadingOne>
       </View>
-      {currentMeal.instructions.map(instruction => {
-        return (
-          <View key={instruction} style={styles.ingredientContainer}>
-          <BodyText>{instruction}</BodyText>
-        </View>
-        )
-      })}
+      {currentMeal.instructions.map(instruction => (
+        <ListItem key={instruction}>{instruction}</ListItem>
+      ))}
     </ScrollView>
   );
 };
@@ -96,12 +89,6 @@ const styles = StyleSheet.create({
   },
   headingContainer: {
     padding: 20
-  },
-  ingredientContainer: {
-    padding: 10,
-    backgroundColor: "#f9f9f9",
-    marginVertical: 5,
-    marginHorizontal: 30
   }
 });
 
