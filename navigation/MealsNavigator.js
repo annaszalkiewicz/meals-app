@@ -4,12 +4,14 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import { createDrawerNavigator } from "react-navigation-drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
 import MealCategoryScreen from "../screens/MealCategoryScreen";
 import MealDetailsScreen from "../screens/MealDetailsScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
+import FiltersScreen from "../screens/FiltersScreen";
 import variables from "../constants/variables";
 
 const defaultStackNavigationOptions = {
@@ -24,23 +26,27 @@ const defaultStackNavigationOptions = {
   }
 };
 
-const MealsNavigator = createStackNavigator({
-  Categories: {
-    screen: CategoriesScreen,
-    navigationOptions: {
-      title: "Meal Categories"
-    }
+const MealsNavigator = createStackNavigator(
+  {
+    Categories: {
+      screen: CategoriesScreen,
+      navigationOptions: {
+        title: "Meal Categories"
+      }
+    },
+    MealCategory: MealCategoryScreen,
+    MealDetails: MealDetailsScreen
   },
-  MealCategory: MealCategoryScreen,
-  MealDetails: MealDetailsScreen
-}, defaultStackNavigationOptions);
+  defaultStackNavigationOptions
+);
 
-
-const FavoritesNavigator = createStackNavigator({
-  Favorites: FavoritesScreen,
-  MealDetails: MealDetailsScreen
-}, defaultStackNavigationOptions);
-
+const FavoritesNavigator = createStackNavigator(
+  {
+    Favorites: FavoritesScreen,
+    MealDetails: MealDetailsScreen
+  },
+  defaultStackNavigationOptions
+);
 
 const tabsConfig = {
   AllMeals: {
@@ -92,4 +98,13 @@ const TabsNavigator =
         }
       });
 
-export default createAppContainer(TabsNavigator);
+const FiltersNavigator = createStackNavigator({
+  Filters: FiltersScreen
+});
+
+const DrawerNavigator = createDrawerNavigator({
+  Meals: TabsNavigator,
+  Filters: FiltersNavigator
+});
+
+export default createAppContainer(DrawerNavigator);
