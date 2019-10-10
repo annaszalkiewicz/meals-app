@@ -3,11 +3,12 @@ import { View, Text, StyleSheet } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import HeaderButton from "../components/HeaderButton";
+import HeadingOne from "../components/ui/HeadingOne";
 
 const FiltersScreen = props => {
   return (
     <View style={styles.container}>
-      <Text>Filters Screen</Text>
+      <HeadingOne style={styles.title}>Filter meals</HeadingOne>
     </View>
   );
 };
@@ -30,8 +31,10 @@ FiltersScreen.navigationOptions = data => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center"
+  },
+  title: {
+    marginVertical: 20
   }
 });
 
