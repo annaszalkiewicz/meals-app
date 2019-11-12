@@ -2,16 +2,17 @@ import React from "react";
 import { ScrollView, View, Image, StyleSheet } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useSelector } from 'react-redux';
 
-import { MEALS } from "../data/meals-db";
 import HeaderButton from "../components/HeaderButton";
 import HeadingOne from "../components/ui/HeadingOne";
 import BodyText from "../components/ui/BodyText";
 import ListItem from "../components/ui/ListItem";
 
 const MealDetailsScreen = props => {
+  const availableMeals = useSelector(state => state.meals.meals)
   const mealId = props.navigation.getParam("mealId");
-  const currentMeal = MEALS.find(meal => meal.id === mealId);
+  const currentMeal = availableMeals.find(meal => meal.id === mealId);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -52,10 +53,9 @@ const MealDetailsScreen = props => {
 };
 
 MealDetailsScreen.navigationOptions = navigationData => {
-  const mealId = navigationData.navigation.getParam("mealId");
-  const currentMeal = MEALS.find(meal => meal.id === mealId);
+  const mealTitle = navigationData.navigation.getParam('mealTitle');
   return {
-    title: currentMeal.title,
+    title: mealTitle,
     headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item title="Add to favorites" iconName="heart-outline" />
