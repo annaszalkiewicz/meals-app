@@ -3,9 +3,12 @@ import { StyleSheet } from "react-native";
 import { useScreens } from "react-native-screens";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
 
 import MealsNavigator from "./navigation/MealsNavigator";
 import CategoriesScreen from "./screens/CategoriesScreen";
+import mealsReducer from "./store/reducers/meals";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -15,6 +18,12 @@ const fetchFonts = () => {
 };
 
 useScreens();
+
+const rootReducer = combineReducers({
+  meals: mealsReducer
+});
+
+const store = createStore(rootReducer);
 
 const App = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -28,7 +37,11 @@ const App = () => {
       />
     );
   }
-  return <MealsNavigator />;
+  return (
+    <Provider store={store}>
+      <MealsNavigator />
+    </Provider>
+  );
 };
 
 const styles = StyleSheet.create({
