@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="afd8a8ba-d623-4ef0-bae4-ac43fae6f9d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/MealDetailsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/MealDetailsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/reducers/meals.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/meals.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,9 +15,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="399" />
-    <option name="y" value="50" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
